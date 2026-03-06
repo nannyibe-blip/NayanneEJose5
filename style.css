@@ -1,0 +1,186 @@
+/* ===== FUNDO ===== */
+body {
+  margin: 0;
+  min-height: 30dvh;
+  position: relative; /* necessário para posicionar o fundo */
+}
+
+/* fundo controlado */
+body::before {
+  content: "";
+  position: fixed; /* ou absolute se preferir acompanhar o scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 20px; /* aqui define onde o fundo PARA */
+
+  background-image: url("https://image2url.com/r2/default/images/1772403770880-65c2a617-495f-49c5-b944-05bfbc5651e0.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+
+  z-index: -1; /* fica atrás do conteúdo */
+}
+
+
+/* ===== PÉTALAS ===== */
+#petals-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -50px;
+  background-image: url("https://djjjk9bjm164h.cloudfront.net/petal.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+/* ===== IMAGEM SUPERIOR ===== */
+.top-image {
+  display: block;
+  margin: 80px auto 40px auto;
+
+  width: 450px;
+  max-width: 90%;
+  height: auto;
+}
+
+
+/* ===== ÁREA DOS BOTÕES ===== */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+
+/* ===== LINHA DOS 3 BOTÕES ===== */
+.top-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+
+/* ===== CADA BOTÃO ===== */
+.btn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* ===== IMAGEM ENTRE OS BOTÕES (TAMANHO FIXO) ===== */
+.middle-image {
+  width: 240px;        /* tamanho fixo */
+  height: auto;
+
+  display: block;
+
+  max-width: none;     /* impede redução automática */
+}
+
+/* ===== BOTÃO DE BAIXO ===== */
+.btn-single {
+  text-align: center;
+}
+
+
+/* ===== IMAGEM DOS BOTÕES ===== */
+.img-btn {
+  width: 70px;
+  height: auto;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.img-btn:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+/* ===== BOTÃO GRANDE INFERIOR ===== */
+.btn-single .img-btn {
+  width: 300px;
+}
+
+
+/* ===== TEXTO ===== */
+.btn-text {
+  margin-top: 8px;
+  color: black;
+  font-family: 'Arapey', serif;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+
+  .top-image {
+    width: 250px;
+  }
+
+  .top-buttons {
+    gap: 18px;
+  }
+
+  .img-btn {
+    width: 55px;
+  }
+
+  .btn-single .img-btn {
+    width: 200px;
+  }
+}
+
+.shopping-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: white;
+  padding: 30px;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 999;
+}
+
+.shopping-popup.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-btns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-btns button {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.no-btn { background: #ddd; }
+.sure-btn { background: #b76e79; color: white; }
